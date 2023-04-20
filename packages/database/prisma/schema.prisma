@@ -15,9 +15,19 @@ model Application {
   communityId Int // Community It Belongs too
   title String // Title for the application
 
-
+  questions Application_Question[]
 
   // Timestamps
   updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
+}
+
+model Application_Question {
+  id Int @id @default(autoincrement())
+  applicationId String
+  // Find a way to implement multiple choice answers
+  type String
+  title String
+
+  application Application @relation(references: [id], fields: [applicationId])
 }

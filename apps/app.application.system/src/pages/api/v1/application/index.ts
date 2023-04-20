@@ -24,9 +24,7 @@ const newApplicationBodyRequest = z.object({
  * @description Create a new application.
  */
 const POST = async (req: NextApiRequest, res: NextApiResponse) => {
-	const { communityId, title } = newApplicationBodyRequest.parse(
-		JSON.parse(req.body)
-	);
+	const { communityId, title } = newApplicationBodyRequest.parse(req.body);
 
 	if (!communityId || !title) {
 		return;
@@ -45,10 +43,11 @@ const POST = async (req: NextApiRequest, res: NextApiResponse) => {
 
 	// Application did not create, return failed request.
 	if (!newAppRecord || !newAppRecord.id) {
-		return res.status(500).json({
+		res.status(500).json({
 			status: "500",
 			message: "An error occured while create a new application.",
 		});
+		return;
 	}
 
 	res.status(200).json({
@@ -56,7 +55,7 @@ const POST = async (req: NextApiRequest, res: NextApiResponse) => {
 		message: " Created new application successfully.",
 		data: newAppRecord,
 	});
-	return newAppRecord;
+	return;
 };
 
 export default handler;
