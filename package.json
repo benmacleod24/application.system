@@ -13,5 +13,8 @@
     "turbo": "latest"
   },
   "packageManager": "pnpm@7.15.0",
-  "name": "application.system"
+  "name": "application.system",
+  "dependencies": {
+    "zod": "^3.21.4"
+  }
 }

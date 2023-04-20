@@ -1,0 +1,12 @@
+{
+  "name": "database",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "dependencies": {
+    "@prisma/client": "latest",
+    "@types/node": "^17.0.12"
+  },
+  "devDependencies": {
+    "prisma": "latest"
+  }
+}

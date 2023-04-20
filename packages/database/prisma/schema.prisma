@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Application {
+  id String @id @default(uuid()) // Unique ID for the application
+  communityId Int // Community It Belongs too
+  title String // Title for the application
+
+
+
+  // Timestamps
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
