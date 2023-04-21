@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient, prisma } from "database";
-import { z } from "zod";
+import { newQuestionRequestBody } from "zod-lib";
 
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
 	const { method } = req;
@@ -12,11 +12,6 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
 			throw new Error("Method does not exist at this endpoint.");
 	}
 };
-
-const newQuestionRequestBody = z.object({
-	title: z.string(),
-	type: z.string(),
-});
 
 /**
  * @method POST
