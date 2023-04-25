@@ -1,17 +1,7 @@
 import { Flex, Grid, Text } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import InputButton from "./inputButton";
-
-// Icons
-import { HiOutlinePlusSm } from "react-icons/hi";
-import {
-	BsInputCursorText,
-	BsQuestionLg,
-	BsTextParagraph,
-} from "react-icons/bs";
-import { BiSelectMultiple } from "react-icons/bi";
-import { TbBoxMultiple3 } from "react-icons/tb";
-import { FaBalanceScaleLeft } from "react-icons/fa";
+import { inputOptions } from "../../../../config";
 
 interface PickInputProps {}
 
@@ -36,15 +26,14 @@ const PickInput: React.FC<PickInputProps> = (props) => {
 				Pick An Input?
 			</Text>
 			<Grid templateColumns={"repeat(3, 1fr)"} w="full" gap={3}>
-				<InputButton text="Short Input" icon={BsInputCursorText} />
-				<InputButton text="Paragraph" icon={BsTextParagraph} />
-				<InputButton text="Checkboxes" icon={BiSelectMultiple} />
-				<InputButton text="Multiple Choice" icon={TbBoxMultiple3} />
-				<InputButton
-					text="On The Scale Of..."
-					icon={FaBalanceScaleLeft}
-				/>
-				<InputButton text="Need One Added?" icon={BsQuestionLg} />
+				{inputOptions.map((i, index) => (
+					<InputButton
+						key={index}
+						text={i.text}
+						icon={i.icon}
+						type={i.type}
+					/>
+				))}
 			</Grid>
 		</Flex>
 	);

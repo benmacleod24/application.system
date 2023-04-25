@@ -18,8 +18,11 @@
 		"@clerk/nextjs": "^4.16.4",
 		"@emotion/react": "^11.10.6",
 		"@emotion/styled": "^11.10.6",
+		"atom": "^1.4.1",
+		"formik": "^2.2.9",
 		"framer-motion": "^10.12.4",
 		"react-icons": "^4.8.0",
+		"recoil": "^0.7.7",
 		"zod": "^3.21.4"
 	}
 }

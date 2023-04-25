@@ -1,7 +1,13 @@
+"use client";
+
 import { Flex, Icon } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import { HiOutlinePlusSm } from "react-icons/hi";
 import PickInput from "./pickInput";
+import { useField } from "formik";
+import { PreDBQuestion } from "types";
+import { isAdding as isAddingAtom } from "../../state/application";
+import { useRecoilState } from "recoil";
 
 interface NewInputButtonProps {}
 
@@ -10,33 +16,32 @@ interface NewInputButtonProps {}
  * @return {React.FC<NewInputButton>}
  */
 const NewInputButton: React.FC<NewInputButtonProps> = (props) => {
-	const [isUsing, setIsUsing] = useState<boolean>(false);
+	const [isAdding, _setter] = useRecoilState(isAddingAtom);
 
 	return (
 		<Flex
-			border={`${isUsing ? "none" : "dashed"} 2px`}
-			rounded={"xl"}
-			justify={"center"}
-			align={isUsing ? "normal" : "center"}
+			p="2"
 			gap={2}
-			onClick={() => setIsUsing(true)}
+			minH="32"
+			rounded={"xl"}
+			cursor={"pointer"}
+			flexDir={"column"}
+			justify={"center"}
 			color="whiteAlpha.400"
 			borderColor="whiteAlpha.200"
-			cursor={"pointer"}
-			transition={"0.2s ease-in-out"}
-			p="2"
-			flexDir={"column"}
-			_hover={
-				isUsing
-					? {}
-					: {
-							bg: "background.800",
-							color: "#5dafff",
-					  }
-			}
+			align={isAdding ? "normal" : "center"}
+			border={`${isAdding ? "none" : "dashed"} 2px`}
+			_hover={{
+				bg: isAdding ? "transparent" : "background.800",
+				color: "#5dafff",
+			}}
+			onClick={() => {
+				if (isAdding) return;
+				_setter(true);
+			}}
 		>
-			{!isUsing && <Icon as={HiOutlinePlusSm} fontSize={"3xl"} />}
-			{isUsing && <PickInput />}
+			{isAdding && <PickInput />}
+			{!isAdding && <Icon as={HiOutlinePlusSm} fontSize={"3xl"} />}
 		</Flex>
 	);
 };
