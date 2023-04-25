@@ -1,6 +1,5 @@
 import { Flex, Text } from "@chakra-ui/react";
-import { useUser } from "@clerk/nextjs";
-import { MotionFlex } from "animations";
+import { SignInButton, useUser } from "@clerk/nextjs";
 import React, { useState, useEffect } from "react";
 
 interface HeaderProps {}
@@ -16,7 +15,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 		isSignedIn &&
 		user.externalAccounts.find((a) => a.provider === "discord");
 
-	if (!discordExternalAccount) return null;
+	if (!discordExternalAccount) return <SignInButton />;
 
 	return (
 		<Flex w="full" py="5" px="8" flexDir={"column"}>

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Application from "@/frontend/components/Application";
 import AddInputButton from "@/frontend/components/AddInputButton";
 import { motion } from "framer-motion";
+import { useUser } from "@clerk/nextjs";
 
 interface ApplicationHomeProps {}
 
