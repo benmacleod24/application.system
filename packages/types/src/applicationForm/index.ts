@@ -7,3 +7,9 @@ export type PreDBQuestion<D = unknown> = {
 	questionData?: D;
 	title?: string;
 };
+
+export type InputOption = {
+	type: string;
+	text: string;
+	icon?: any;
+};
