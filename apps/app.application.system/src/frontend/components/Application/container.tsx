@@ -1,4 +1,6 @@
 import { Flex } from "@chakra-ui/react";
+import { MotionFlex } from "animations";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
 
 interface ApplicationContainerProps {}
@@ -14,6 +16,7 @@ const ApplicationContainer: React.FC<
 		<Flex
 			p="5"
 			mx="auto"
+			h="fit-content"
 			rounded="3xl"
 			flexDir="column"
 			w="container.md"

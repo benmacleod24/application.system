@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import AddButton from "./AddButton";
 import Container from "./Container";
 import { useBoolean } from "@chakra-ui/react";
+import PickInput from "./PickInput";
+import { AnimatePresence } from "framer-motion";
 
 interface AddInputButtonProps {}
 
@@ -17,7 +19,7 @@ const AddInputButton: React.FC<AddInputButtonProps> = (props) => {
 		return <AddButton toggle={setUsing.toggle} />;
 	}
 
-	return <Container></Container>;
+	return <PickInput />;
 };
 
 export default AddInputButton;

@@ -1,4 +1,5 @@
 import { Flex } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
 
 interface ContainerProps {}
@@ -10,7 +11,11 @@ interface ContainerProps {}
 const Container: React.FC<React.PropsWithChildren<ContainerProps>> = (
 	props
 ) => {
-	return <Flex>{props.children}</Flex>;
+	return (
+		<Flex rounded="lg" as={motion.div} layout>
+			{props.children}
+		</Flex>
+	);
 };
 
 export default Container;

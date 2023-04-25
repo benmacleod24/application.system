@@ -1,5 +1,6 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { useUser } from "@clerk/nextjs";
+import { MotionFlex } from "animations";
 import React, { useState, useEffect } from "react";
 
 interface HeaderProps {}

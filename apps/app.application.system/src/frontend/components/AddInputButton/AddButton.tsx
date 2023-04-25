@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { HiOutlinePlusSm } from "react-icons/hi";
-import { Flex, Icon } from "@chakra-ui/react";
+import { Flex, FlexProps, Icon } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
 interface AddButtonProps {
 	toggle: () => void;
@@ -11,6 +12,11 @@ interface AddButtonProps {
  * @return {React.FC<AddButton>}
  */
 const AddButton: React.FC<AddButtonProps> = (props) => {
+	const onHover: FlexProps["_hover"] = {
+		bg: "background.800",
+		color: "#5dafff",
+	};
+
 	return (
 		<Flex
 			p="2"
@@ -24,11 +30,8 @@ const AddButton: React.FC<AddButtonProps> = (props) => {
 			border="dashed 2px"
 			color="whiteAlpha.400"
 			borderColor="whiteAlpha.200"
-			_hover={{
-				bg: "background.800",
-				color: "#5dafff",
-			}}
 			onClick={props.toggle}
+			_hover={onHover}
 		>
 			<Icon as={HiOutlinePlusSm} fontSize={"3xl"} />
 		</Flex>
