@@ -15,6 +15,7 @@ const ApplicationContainer: React.FC<
 	return (
 		<Flex
 			p="5"
+			mt="10"
 			mx="auto"
 			h="fit-content"
 			rounded="3xl"

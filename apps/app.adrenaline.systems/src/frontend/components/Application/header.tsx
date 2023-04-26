@@ -2,27 +2,21 @@ import { Flex, Text } from "@chakra-ui/react";
 import { SignInButton, useUser } from "@clerk/nextjs";
 import React, { useState, useEffect } from "react";
 
-interface HeaderProps {}
+interface HeaderProps {
+	username: string;
+}
 
 /**
  * @description Application header title and information.
  * @return {React.FC<Header>}
  */
 const Header: React.FC<HeaderProps> = (props) => {
-	const { isSignedIn, user } = useUser();
-
-	const discordExternalAccount =
-		isSignedIn &&
-		user.externalAccounts.find((a) => a.provider === "discord");
-
-	if (!discordExternalAccount) return <SignInButton />;
-
 	return (
 		<Flex w="full" py="5" px="8" flexDir={"column"}>
 			{/* Welcome Text. */}
 			<Flex flexDir={"column"} gap={2}>
 				<Text fontSize="3xl" fontWeight={"bold"} lineHeight={"none"}>
-					Alight {discordExternalAccount.username},
+					Alight {props.username},
 				</Text>
 				<Text
 					fontSize="3xl"
