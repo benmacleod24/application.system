@@ -31,6 +31,9 @@ importers:
       recoil:
         specifier: ^0.7.7
         version: 0.7.7(react-dom@18.2.0)(react@18.2.0)
+      swr:
+        specifier: ^2.1.5
+        version: 2.1.5(react@18.2.0)
       zod:
         specifier: ^3.21.4
         version: 3.21.4
@@ -44,6 +47,42 @@ importers:
       turbo:
         specifier: latest
         version: 1.9.3
+
+  apps/app.adrenaline.systems:
+    dependencies:
+      '@types/node':
+        specifier: ^17.0.12
+        version: 17.0.45
+      '@types/react':
+        specifier: 18.0.37
+        version: 18.0.37
+      '@types/react-dom':
+        specifier: 18.0.11
+        version: 18.0.11
+      database:
+        specifier: workspace:*
+        version: link:../../packages/database
+      next:
+        specifier: 13.3.0
+        version: 13.3.0(react-dom@18.2.0)(react@18.2.0)
+      react:
+        specifier: 18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      styles:
+        specifier: workspace:*
+        version: link:../../packages/styles
+      types:
+        specifier: workspace:*
+        version: link:../../packages/types
+      typescript:
+        specifier: 5.0.4
+        version: 5.0.4
+      zod-lib:
+        specifier: workspace:*
+        version: link:../../packages/zod-lib
 
   apps/app.application.system:
     dependencies:
@@ -2980,6 +3019,15 @@ packages:
       react: 18.2.0
     dev: false
 
+  /swr@2.1.5(react@18.2.0):
+    resolution: {integrity: sha512-/OhfZMcEpuz77KavXST5q6XE9nrOBOVcBLWjMT+oAE/kQHyE3PASrevXCtQDZ8aamntOfFkbVJp7Il9tNBQWrw==}
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
   /table@6.8.1:
     resolution: {integrity: sha512-Y4X9zqrCftUhMeH2EptSSERdVKt/nEdijTOacGD/97EKjhQ/Qs8RTlEGABSJNNN8lac9kheH+af7yAkEWlgneA==}
     engines: {node: '>=10.0.0'}
@@ -3157,6 +3205,14 @@ packages:
       detect-node-es: 1.1.0
       react: 18.2.0
       tslib: 2.4.1
+    dev: false
+
+  /use-sync-external-store@1.2.0(react@18.2.0):
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /v8-compile-cache@2.3.0:
