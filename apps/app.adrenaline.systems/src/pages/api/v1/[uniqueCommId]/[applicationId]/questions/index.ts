@@ -21,7 +21,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
  * @description Create a new question for a specific application.
  */
 const POST = async (req: NextApiRequest, res: NextApiResponse) => {
-	const body = newQuestionRequestBody.parse(req.body);
+	const body = newQuestionRequestBody.parse(JSON.parse(req.body));
 
 	if (!body) {
 		res.status(404).json({

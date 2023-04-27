@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import { MotionFlex } from "animations";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
 
@@ -9,13 +9,15 @@ interface ApplicationContainerProps {}
  * @description Container for the application.
  * @return {React.FC<ApplicationContainer>}
  */
-const ApplicationContainer: React.FC<
-	React.PropsWithChildren<ApplicationContainerProps>
-> = (props) => {
+const ApplicationContainer: React.FC<React.PropsWithChildren<ApplicationContainerProps>> = (
+	props
+) => {
+	const [parent] = useAutoAnimate();
+
 	return (
 		<Flex
 			p="5"
-			mt="10"
+			my="10"
 			mx="auto"
 			h="fit-content"
 			rounded="3xl"
@@ -25,6 +27,7 @@ const ApplicationContainer: React.FC<
 			border="2px solid"
 			bg="background.700"
 			borderColor="whiteAlpha.200"
+			ref={parent}
 		>
 			{props.children}
 		</Flex>

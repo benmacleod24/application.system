@@ -10,6 +10,8 @@ import { applicationClientQuery } from "zod-lib";
 import { getQuestionsForAppId } from "@/backend/helpers/getQuestionsForAppId";
 import { useRouter } from "next/router";
 import { doesAppIdExist } from "@/backend/helpers/doesAppIdExist";
+import AddInputButton from "@/frontend/components/AddInputButton";
+import useSWR from "swr";
 
 interface ApplicationPageProps {
 	questions: Awaited<typeof getQuestionsForAppId>;
@@ -23,6 +25,8 @@ const ApplicationPage: React.FC<ApplicationPageProps> = (props) => {
 	const { communityId } = useCommunity();
 	const { user } = useUser();
 	const { query } = useRouter();
+
+	const { data } = useSWR(`/api/v1/${query.unqiueCommunityId}/${query.appId}/questions`);
 
 	// Check if the community exist, not just string.
 	if (!communityId || !query.appId) {
@@ -40,7 +44,8 @@ const ApplicationPage: React.FC<ApplicationPageProps> = (props) => {
 		<Application.Container>
 			<Application.Header username={user!.username as string} />
 			<Application.Body>
-				<pre>{JSON.stringify(props.questions, null, 3)}</pre>
+				<pre>{JSON.stringify(data || {}, null, 2)}</pre>
+				<AddInputButton />
 			</Application.Body>
 		</Application.Container>
 	);
@@ -73,6 +78,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 		};
 	}
 
+	// Collect questions on the server side.
+	const questions = await getQuestionsForAppId(appId);
+	props = { ...props, questions };
+
 	// If they are requesting the editor, make sure they can access it.
 	if (view === "editor") {
 		// If they are requesting editor access, check if they can.
@@ -84,10 +93,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 			props: { ...props, ...buildClerkProps(ctx.req, { user }) },
 		};
 	}
-
-	// Collect questions on the server side.
-	const questions = await getQuestionsForAppId(appId);
-	props = { ...props, questions };
 
 	return { props: props };
 };
