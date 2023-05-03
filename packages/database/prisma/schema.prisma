@@ -10,24 +10,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Application {
-  id String @id @default(uuid()) // Unique ID for the application
-  communityId Int // Community It Belongs too
-  title String // Title for the application
+model Forum {
+  forumId     String @id @default(cuid())
+  communityId Int
+  forumTitle  String
+  description String
 
-  questions Application_Question[]
-
-  // Timestamps
-  updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
-}
-
-model Application_Question {
-  id Int @id @default(autoincrement())
-  applicationId String
-  // Find a way to implement multiple choice answers
-  type String
-  title String
-
-  application Application @relation(references: [id], fields: [applicationId])
+  updatedAt DateTime @updatedAt
 }

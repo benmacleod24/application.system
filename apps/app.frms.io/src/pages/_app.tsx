@@ -1,9 +1,9 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import { ClerkProvider } from "@clerk/nextjs";
 import { type AppType } from "next/dist/shared/lib/utils";
 import { theme } from "styles";
 
-import "~/styles/globals.css";
+// Providers
+import { ChakraProvider } from "@chakra-ui/react";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
 	return (
