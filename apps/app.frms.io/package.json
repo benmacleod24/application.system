@@ -28,7 +28,9 @@
 		"eslint-config-next": "^13.2.4",
 		"prisma": "^4.11.0",
 		"typescript": "^5.0.2",
-		"styles": "workspace:*"
+		"styles": "workspace:*",
+		"zod-lib": "workspace:*",
+		"database": "workspace:*"
 	},
 	"ct3aMetadata": {
 		"initVersion": "7.12.1"
