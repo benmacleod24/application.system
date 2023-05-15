@@ -8,6 +8,8 @@ export const Button = defineStyleConfig({
 			_hover: {
 				bg: "brand.800",
 			},
+			border: "1px solid",
+			borderColor: "whiteAlpha.200",
 		},
 		simple: {
 			fontWeight: "normal",
