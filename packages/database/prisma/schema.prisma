@@ -10,12 +10,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Forum {
-  forumId     String @id @default(cuid())
-  communityId Int
-  forumTitle  String
-  description String
+model Community {
+  communityId   String @id @default(cuid())
+  communityName String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  members Community_Member[]
+}
+
+model Community_Member {
+  memberId    String   @default(cuid())
+  communityId String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  community Community @relation(fields: [communityId], references: [communityId])
+
+  @@id([memberId, communityId])
 }
