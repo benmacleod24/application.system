@@ -18,6 +18,7 @@
 		"styles": "workspace:*",
 		"utils": "workspace:*",
 		"types": "workspace:*",
+		"ui-components": "workspace:*",
 		"zod": "^3.21.4"
 	},
 	"devDependencies": {

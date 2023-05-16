@@ -85,6 +85,7 @@ const POST = async (req: NextApiRequest, res: NextApiResponse) => {
 				message: "Could not find correct authentication details.",
 			})
 		);
+		return;
 	}
 
 	try {
